@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     sse_server->start();
 
     auto dcm_server = dcm::streamsocket::make_receiver(interproc::streamsocket_type::unix, argv[2]);
-    dcm_server->on_message = [&sse_server](dcm::message &&_message) {
+    dcm_server->on_message = [&sse_server](const dcm::message &_message) {
         //std::cout << "caught " << _message.header.at("signal") << " signal with data: "<< _message.body.at("data") << std::endl;
         std::unordered_map<std::string, std::string> signal;
         json11::Json::object json;
