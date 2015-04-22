@@ -9,5 +9,7 @@ FIND_LIBRARY(DCM_LIBRARY dcm /usr/local/lib/dcm/)
 
 target_link_libraries(sse_server
     pthread
+    boost_filesystem
+    boost_system
     ${DCM_LIBRARY}
 )
